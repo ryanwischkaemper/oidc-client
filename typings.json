@@ -1,0 +1,11 @@
+{
+  "name": "oidc-client",
+  "dependencies": {
+    "es6-promise": "github:typed-typings/npm-es6-promise#fb04188767acfec1defd054fc8024fafa5cd4de7"
+  },
+  "devDependencies": {},
+  "ambientDependencies": {
+    "crypto-js": "github:DefinitelyTyped/DefinitelyTyped/crypto-js/crypto-js.d.ts#1429bcc7fed522b2eac523118ffca0b2486578e1",
+    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#dd638012d63e069f2c99d06ef4dcc9616a943ee4"
+  }
+}
