@@ -1,11 +1,17 @@
+import 'crypto-lib';
+import 'rsa-lib';
+import 'json-sans-eval-lib';
+import 'jws-lib';
 import {Promise} from 'es6-promise';
 import {Utils} from './Utils';
+import {DefaultHttpRequest} from './DefaultHttpRequest';
 
 export class OidcClient {
   _settings: any;
-  _httpRequest: any;
+  httpRequest: DefaultHttpRequest;
 
   constructor(settings: any) {
+    this.httpRequest = new DefaultHttpRequest();
     this._settings = settings || {};
     if (!this._settings.request_state_key) {
       this._settings.request_state_key = "OidcClient.request_state";
@@ -33,6 +39,13 @@ export class OidcClient {
     if (!this._settings.response_type) {
       this._settings.response_type = "id_token token";
     }
+  }
+
+  get _httpRequest(): DefaultHttpRequest{
+    if(typeof (this.httpRequest) === "undefined" || this.httpRequest === null) {
+      this.httpRequest = new DefaultHttpRequest();
+    };
+    return this.httpRequest;
   }
 
   get isOidc(): boolean {

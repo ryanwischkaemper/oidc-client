@@ -1,19 +1,21 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "target": "es5",
-        "module": "amd",
-        "declaration": false,
-        "noImplicitAny": false,
-        "removeComments": true,
-        "noLib": false,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
-    },
-     "exclude": [
-      "node_modules",
-      "jspm_packages",
-      "typings/main.d.ts",
-      "typings/main"
-    ]
+	"compileOnSave": false,
+  "files": [
+    "src/index.ts",
+    "typings/browser.d.ts",
+    "node_modules/typescript/lib/lib.es6.d.ts"
+  ],
+	"compilerOptions": {
+		"target": "es5",
+		"module": "system",
+		"declaration": false,
+		"noImplicitAny": false,
+		"removeComments": true,
+		"noLib": false,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+
+	}
+
 }

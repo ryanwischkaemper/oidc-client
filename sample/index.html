@@ -8,10 +8,15 @@
     <button id="token">Get Token</button>
     <button id="signout">Logout of IdentityServer</button>
     <pre id="result"></pre>
-    <script src="jquery-2.1.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+  <script src="system.js"></script>
+  <script src="jspm.config.js"></script>
+  <script src="system.yuml.js"></script>
     <script src="oidc-client.js"></script>
     <script>
         $(function () {
+          System.import('src/OidcClient').then(function(result){
             var config = {
                 client_id: "js.tokenmanager",
                 redirect_uri: window.location.protocol + "//" + window.location.host + "/index.html",
@@ -20,7 +25,7 @@
                 scope: "openid profile email read write",
                 authority: "https://localhost:44333/core"
             };
-            var client = new OidcClient(config);
+            var client = new result.OidcClient(config);
             window.client = client;
 
             var id_token;
@@ -55,6 +60,9 @@
                     window.location = url;
                 });
             });
+          }).catch(function(err){
+            console.error('An error occurred while bootstrapping the sample app. ' + err.message);
+          });
 
         });
     </script>

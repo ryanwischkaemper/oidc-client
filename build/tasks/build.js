@@ -12,7 +12,7 @@ var tsProject = ts.createProject('./tsconfig.json', {
   noExternalResolve: true
 });
 
-gulp.task('build',['clean'], function() {
+gulp.task('bundle',['clean'], function() {
   var tsResult = gulp.src([paths.source, paths.typings[0]])
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(ts(tsProject));
@@ -22,10 +22,13 @@ gulp.task('build',['clean'], function() {
     .pipe(gulp.dest(paths.output));
 });
 
-gulp.task('bundle', ['clean'],function(done) {
-  var builder = new Builder(paths.root, paths.root + 'jspm.config.js');
+gulp.task('build', ['clean'], function() {
+  var builder = new Builder(paths.root, paths.jspmconfig);
 
-  builder.buildStatic('src/*', paths.output + 'main-built.js', { minify: false }).then(function() { done();});
+  builder.bundle('src', paths.output + 'oidc-client.js', { minify: false }).then(function() {
+    return gulp.src([paths.output + 'oidc-client.js', paths.systemjs.default, paths.jspmconfig])
+      .pipe(gulp.dest(paths.outputSample));
+  });
 });
 
 
