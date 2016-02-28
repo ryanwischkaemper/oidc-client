@@ -9,7 +9,7 @@ var bsConfig = {
     open: 'local',
     port: 21575,
     server: {
-      baseDir: [paths.outputSample],
+      baseDir: [paths.root,paths.outputSample],
       middleware: function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
@@ -19,7 +19,14 @@ var bsConfig = {
 };
 
 
-gulp.task('serve:sample', ['build'], function(done) {
+gulp.task('serve:sample', function(done) {
+  var bs = browserSync.create(bsConfig.instancename);
+  bs.init(bsConfig.config, function() {
+    done();
+  });
+});
+
+gulp.task('serve', ['build'], function(done) {
   var bs = browserSync.create(bsConfig.instancename);
   bs.init(bsConfig.config, function() {
     done();

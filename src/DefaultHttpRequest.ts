@@ -1,5 +1,3 @@
-import Promise from 'es6-promise';
-
 export class DefaultHttpRequest
 {
   setHeaders(xhr: XMLHttpRequest, headers: any): void {

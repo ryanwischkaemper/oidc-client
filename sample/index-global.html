@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,21 +13,15 @@
 
   <div>
     <p style="font-size:larger">
-      SystemJS is loading this code. From the browser's console, run <span style="font-weight:bold">showModuleRelationships()</span>      to see a visual layout of this code's heirarchy.
+      SystemJS is not needed with this build - our modules are now exposed globally. Get an instance of a <span style="font-weight:bold">OidcClient</span> by calling <span style="font-weight:bold">new IdentityModel.OidcClient()</span>
     </p>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-
-  <script src="../jspm_packages/system.src.js"></script>
-  <script src="../jspm.browser.js"></script>
-  <script src="../jspm.config.js"></script>
-  <script src="system.yuml.js"></script>
+  <script src="../dist/oidc-client.global.js"></script>
 
   <script>
     $(function () {
-          System.import('src').then(function(result){
-            console.dir(result);
             var config = {
                 client_id: "js.tokenmanager",
                 redirect_uri: window.location.protocol + "//" + window.location.host + "/index.html",
@@ -36,7 +30,7 @@
                 scope: "openid profile email read write",
                 authority: "https://localhost:44333/core"
             };
-            var client = new result.OidcClient(config);
+            var client = new IdentityModel.OidcClient(config);
             window.client = client;
 
             var id_token;
@@ -71,9 +65,6 @@
                     window.location = url;
                 });
             });
-          }).catch(function(err){
-            console.error('An error occurred while bootstrapping the sample app. ' + err.message);
-          });
 
         });
   </script>

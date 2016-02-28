@@ -12,10 +12,13 @@ module.exports = {
     './typings/browser/**/*.d.ts'
   ],
 
-  jspmconfig: './jspm.config.js',
+  jspm: {
+    config: './jspm.config.js',
+    browserConfig: './jspm.browser.js'
+  },
 
   systemjs: {
     default: './jspm_packages/system.js',
     csp: './jspm_packages/system-csp-production.js'
   }
-};
+}

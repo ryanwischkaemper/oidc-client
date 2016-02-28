@@ -1,21 +1,15 @@
 {
-	"compileOnSave": false,
   "files": [
     "src/index.ts",
     "typings/browser.d.ts",
+    "lib/rsa.d.ts",
     "node_modules/typescript/lib/lib.es6.d.ts"
   ],
 	"compilerOptions": {
-		"target": "es5",
-		"module": "system",
-		"declaration": false,
-		"noImplicitAny": false,
-		"removeComments": true,
-		"noLib": false,
+		"target": "es6",
+		"module": "commonjs",
 		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true
-
+    "experimentalDecorators": true
 	}
 
 }

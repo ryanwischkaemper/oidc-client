@@ -1,8 +1,4 @@
-import 'crypto-lib';
 import 'rsa-lib';
-import 'json-sans-eval-lib';
-import 'jws-lib';
-import {Promise} from 'es6-promise';
 import {Utils} from './Utils';
 import {DefaultHttpRequest} from './DefaultHttpRequest';
 
